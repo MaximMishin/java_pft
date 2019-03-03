@@ -12,11 +12,11 @@ public class Point {
 
   }
 
-  public static double square(double a) {
+  public double square(double a) {
     return a * a;
   }
 
-  public static double distance(Point p1, Point p2) {
+  public double distance(Point p1, Point p2) {
     return Math.sqrt(square(p2.x - p1.x) + square(p2.y - p1.y));
   }
 }
