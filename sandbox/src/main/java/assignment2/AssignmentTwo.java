@@ -4,10 +4,12 @@ public class AssignmentTwo {
 
   public static void main(String[] args) {
 
-    Point p1 = new Point(4, 7);
-    Point p2 = new Point(2, 3);
+    Point points = new Point(4, 7, 2, -3);
 
-    System.out.println("Расстояния между двумя точками = " + p1.distance(p1,p2));
+    System.out.println("Расстояния между двумя точками "
+            + points.x1 + ";" + points.y1 +
+            " и " + points.x2 + ";" + points.y2 +
+            " = " + points.distance());
   }
 }
 
