@@ -2,25 +2,17 @@ package assignment2;
 
 public class Point {
 
-  double x1;
-  double y1;
-  double x2;
-  double y2;
+  double x;
+  double y;
 
-  public Point(double x1, double y1, double x2, double y2) {
+  public Point(double x, double y) {
 
-    this.x1 = x1;
-    this.y1 = y1;
-    this.x2 = x2;
-    this.y2 = y2;
+    this.x = x;
+    this.y = y;
 
   }
 
-  public double square(double a) {
-    return a * a;
-  }
-
-  public double distance() {
-    return Math.sqrt(square(x2 - x1) + square(y2 - y1));
+  public double distance(Point p) {
+    return Math.sqrt(Math.pow((p.x - this.x),2) + Math.pow((p.y - this.y), 2));
   }
 }
