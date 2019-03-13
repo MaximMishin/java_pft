@@ -21,7 +21,6 @@ public class ContactCreationTests {
 
   @Test
   public void testContactCreation() throws Exception {
-
     gotoAddNewPage();
     fillContactForm(new ContactData("firstName", "middleName", "lastName", "nickName", "title", "Company", "address", "757575", "+79876543211", "575757", "999666", "email1@mail.ru", "email2@mail.ru", "email3@mail.ru", "http://homepage", "10", "January", "1990", "5", "February", "2020", "Secondary Address", "767676", "notesText"));
     submitContactCration();
