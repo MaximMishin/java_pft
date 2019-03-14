@@ -4,14 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.stqa.pft.addressbook.model.GroupData;
 
-public class GroupsHelper extends HelperBase{
+public class GroupsHelper extends HelperBase {
 
   public GroupsHelper(ChromeDriver wd) {
     super(wd);
   }
 
-  public void returnToGroupPage()
-  {
+  public void returnToGroupPage() {
     click(By.linkText("group page"));
   }
 

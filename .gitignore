@@ -24,3 +24,7 @@ sandbox/.DS_Store
 *.class
 *.class
 *.class
+.DS_Store
+*.class
+sandbox/out/production/classes/assignment2/AssignmentTwo.class
+sandbox/.DS_Store
