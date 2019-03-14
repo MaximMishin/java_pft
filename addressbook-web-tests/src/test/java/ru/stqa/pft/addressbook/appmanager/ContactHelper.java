@@ -8,7 +8,7 @@ public class ContactHelper extends HelperBase {
   public ContactHelper(ChromeDriver wd) {
     super(wd);
   }
-  
+
   public void submitContactCration() {
     click(By.xpath("(//input[@name='submit'])[2]"));
   }
@@ -44,8 +44,15 @@ public class ContactHelper extends HelperBase {
     click(By.name("selected[]"));
   }
 
-  public void deletContact() {
+  public void deleteContact() {
     click(By.xpath("//input[@value='Delete']"));
   }
 
+  public void initContactModification() {
+    click(By.xpath("(//img[@alt='Edit'])"));
+  }
+
+  public void submitContactModification() {
+    click(By.name("update"));
+  }
 }
