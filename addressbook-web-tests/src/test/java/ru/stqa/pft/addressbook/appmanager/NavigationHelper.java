@@ -10,18 +10,32 @@ public class NavigationHelper extends HelperBase {
   }
 
   public void gotoGroupPage() {
+    if (isElementPresent(By.tagName("h1"))
+            && wd.findElement(By.tagName("h1")).getText().equals("Groups")
+            && isElementPresent(By.name("new"))) {
+      return;
+    }
     click(By.linkText("groups"));
   }
 
   public void gotoAddNewPage() {
+    if (isElementPresent(By.xpath("//label[21]"))
+            && wd.findElement(By.xpath("//label[21]")).getText().equals("Groups")) {
+      return;
+    }
     click(By.linkText("add new"));
   }
 
   public void gotoHomePage() {
+    if (isElementPresent(By.id("maintable"))) {
+      return;
+    }
     click(By.linkText("home"));
   }
 
   public void closeDialogBox() {
     wd.switchTo().alert().accept();
   }
+
+
 }
