@@ -1,31 +1,35 @@
 package ru.stqa.pft.addressbook.model;
 
+
+import java.util.Objects;
+
 public class ContactData {
+  private int id;
   private final String firstName;
-  private final String middleName;
+  private String middleName;
   private final String lastName;
-  private final String nickName;
-  private final String title;
-  private final String company;
-  private final String address;
-  private final String homePhon;
-  private final String mobilePhone;
-  private final String workPhone;
-  private final String fax;
-  private final String email1;
-  private final String email2;
-  private final String email3;
-  private final String homePage;
-  private final String bday;
-  private final String bmonth;
-  private final String byear;
-  private final String aday;
-  private final String amonth;
-  private final String ayear;
-  private final String secondaryAddress;
-  private final String phoneTwo;
-  private final String notes;
-  private final String group;
+  private String nickName;
+  private String title;
+  private String company;
+  private String address;
+  private String homePhon;
+  private String mobilePhone;
+  private String workPhone;
+  private String fax;
+  private String email1;
+  private String email2;
+  private String email3;
+  private String homePage;
+  private String bday;
+  private String bmonth;
+  private String byear;
+  private String aday;
+  private String amonth;
+  private String ayear;
+  private String secondaryAddress;
+  private String phoneTwo;
+  private String notes;
+  private String group;
 
   public ContactData(String firstName, String middleName, String lastName,
                      String nickName, String title, String company,
@@ -36,6 +40,7 @@ public class ContactData {
                      String aday, String amonth, String ayear,
                      String secondaryAddress, String phoneTwo, String notes,
                      String group) {
+    this.id = Integer.MAX_VALUE;
     this.firstName = firstName;
     this.middleName = middleName;
     this.lastName = lastName;
@@ -61,6 +66,12 @@ public class ContactData {
     this.phoneTwo = phoneTwo;
     this.notes = notes;
     this.group = group;
+  }
+
+  public ContactData(int id, String firstName, String lastName) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
   }
 
   public String getFirstName() {
@@ -161,5 +172,23 @@ public class ContactData {
 
   public String getGroup() {
     return group;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return Objects.equals(firstName, that.firstName) &&
+            Objects.equals(lastName, that.lastName);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(firstName, lastName);
   }
 }
