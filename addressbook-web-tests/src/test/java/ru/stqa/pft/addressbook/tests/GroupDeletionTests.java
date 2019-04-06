@@ -1,27 +1,35 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
-import java.util.List;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.*;
 
 public class GroupDeletionTests extends TestBase {
 
+
+  @BeforeMethod
+  public void ensurePreconditions() {
+    app.goTo().groupPage();
+    if (app.group().all().size() == 0) {
+      app.group().create(new GroupData().withName("test1"));
+    }
+  }
+
   @Test
   public void testGroupDeletion() {
-    app.getNavigationHelper().gotoGroupPage();
-    if (!app.getGroupsHelper().isThereGroup()) {
-      app.getGroupsHelper().createGroup(new GroupData("test1", null, null));
-    }
-    List<GroupData> before = app.getGroupsHelper().getGroupList();
-    app.getGroupsHelper().selectGroup(before.size() - 1);
-    app.getGroupsHelper().deleteSelectedGroups();
-    app.getNavigationHelper().gotoGroupPage();
-    List<GroupData> after = app.getGroupsHelper().getGroupList();
+    Groups before = app.group().all();
+    GroupData deletedGroup = before.iterator().next();
+    app.group().delete(deletedGroup);
+    Groups after = app.group().all();
     Assert.assertEquals(after.size(), before.size() - 1);
 
-    before.remove(before.size() - 1);
-    Assert.assertEquals(before, after);
+    assertThat(after, equalTo(before.without(deletedGroup)));
   }
+
+
 }

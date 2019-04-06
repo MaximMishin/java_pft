@@ -1,35 +1,57 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.List;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactDeletionTests extends TestBase {
+
+  @BeforeMethod
+  public void ensurePreconditions() {
+    app.goTo().homePage();
+    if (app.contact().all().size() == 0) {
+      app.goTo().addNewPage();
+      app.contact().create(new ContactData()
+              .withFirstName("firstName")
+              .withMiddleName("middleName")
+              .withLastName("lastName")
+              .withNickName("nickName")
+              .withTitle("title")
+              .withCompany("Company")
+              .withAddress("address")
+              .withHomePhon("757575")
+              .withMobilePhone(null)
+              .withWorkPhone("575757")
+              .withFax("999666")
+              .withEmail1("email1@mail.ru")
+              .withEmail2("email2@mail.ru")
+              .withEmail3("email3@mail.ru")
+              .withHomePage("http://homepage")
+              .withBday("10")
+              .withBmonth(null)
+              .withByear("1990")
+              .withAday("5")
+              .withAmonth("February")
+              .withAyear("2020")
+              .withSecondaryAddress("Secondary Address")
+              .withPhoneTwo("767676")
+              .withNotes("notesText"), true);
+    }
+  }
+
   @Test
   public void testContactDeletion() {
-    app.getNavigationHelper().gotoHomePage();
-    if (!app.getContactHelper().isThereContact()) {
-      app.getNavigationHelper().gotoAddNewPage();
-      app.getContactHelper().createContact(new ContactData("firstName", "middleName", "lastName",
-              "nickName", "title", "Company", "address", "757575",
-              null, "575757", "999666",
-              "email1@mail.ru", "email2@mail.ru", "email3@mail.ru", "http://homepage",
-              "10", null, "1990",
-              "5", "February", "2020",
-              "Secondary Address", "767676", "notesText",
-              "test1"), true);
-    }
-    List<ContactData> before = app.getContactHelper().getContactList();
-    app.getContactHelper().selectContact(before.size() - 1);
-    app.getContactHelper().deleteContact();
-    app.getNavigationHelper().closeDialogBox();
-    app.getNavigationHelper().gotoHomePage();
-    List<ContactData> after = app.getContactHelper().getContactList();
+    Contacts before = app.contact().all();
+    ContactData deletedContact = before.iterator().next();
+    app.contact().delete(deletedContact);
+    Contacts after = app.contact().all();
     Assert.assertEquals(after.size(), before.size() - 1);
 
-    before.remove(before.size() - 1);
-    Assert.assertEquals(before, after);
+    assertThat(after, equalTo(before.without(deletedContact)));
   }
 }
