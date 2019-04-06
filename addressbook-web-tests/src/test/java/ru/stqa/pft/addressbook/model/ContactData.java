@@ -12,7 +12,7 @@ public class ContactData {
   private String title;
   private String company;
   private String address;
-  private String homePhon;
+  private String homePhone;
   private String mobilePhone;
   private String workPhone;
   private String fax;
@@ -30,6 +30,13 @@ public class ContactData {
   private String phoneTwo;
   private String notes;
   private String group;
+  private String allPhones;
+  private String allEmails;
+
+  public ContactData withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
 
   public ContactData withId(int id) {
     this.id = id;
@@ -72,7 +79,7 @@ public class ContactData {
   }
 
   public ContactData withHomePhon(String homePhon) {
-    this.homePhon = homePhon;
+    this.homePhone = homePhon;
     return this;
   }
 
@@ -161,6 +168,11 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
   public String getFirstName() {
     return firstName;
   }
@@ -189,8 +201,8 @@ public class ContactData {
     return address;
   }
 
-  public String getHomePhon() {
-    return homePhon;
+  public String getHomePhone() {
+    return homePhone;
   }
 
   public String getMobilePhone() {
@@ -263,6 +275,14 @@ public class ContactData {
 
   public int getId() {
     return id;
+  }
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  public String getAllEmails() {
+    return allEmails;
   }
 
   @Override
