@@ -53,43 +53,43 @@ public class ContactDataGenerator {
     XStream xstream = new XStream();
     xstream.processAnnotations(ContactData.class);
     String xml = xstream.toXML(contacts);
-    Writer writer = new FileWriter(file);
-    writer.write(xml);
-    writer.close();
+    try (Writer writer = new FileWriter(file)) {
+      writer.write(xml);
+    }
   }
 
   private void saveAsCSV(List<ContactData> contacts, File file) throws IOException {
     System.out.println(new File(".").getAbsolutePath());
-    Writer writer = new FileWriter(file);
-    for (ContactData contact : contacts)
-      writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n",
-              contact.getFirstName(),
-              contact.getMiddleName(),
-              contact.getLastName(),
-              contact.getNickName(),
-              contact.getTitle(),
-              contact.getCompany(),
-              contact.getAddress(),
-              contact.getHomePhone(),
-              contact.getMobilePhone(),
-              contact.getWorkPhone(),
-              contact.getFax(),
-              contact.getEmail1(),
-              contact.getEmail2(),
-              contact.getEmail3(),
-              contact.getHomePage(),
-              contact.getBday(),
-              contact.getBmonth(),
-              contact.getByear(),
-              contact.getAday(),
-              contact.getAmonth(),
-              contact.getAyear(),
-              contact.getSecondaryAddress(),
-              contact.getPhoneTwo(),
-              contact.getNotes(),
-              contact.getGroup(),
-              contact.getPhoto()));
-    writer.close();
+    try (Writer writer = new FileWriter(file)) {
+      for (ContactData contact : contacts)
+        writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n",
+                contact.getFirstName(),
+                contact.getMiddleName(),
+                contact.getLastName(),
+                contact.getNickName(),
+                contact.getTitle(),
+                contact.getCompany(),
+                contact.getAddress(),
+                contact.getHomePhone(),
+                contact.getMobilePhone(),
+                contact.getWorkPhone(),
+                contact.getFax(),
+                contact.getEmail1(),
+                contact.getEmail2(),
+                contact.getEmail3(),
+                contact.getHomePage(),
+                contact.getBday(),
+                contact.getBmonth(),
+                contact.getByear(),
+                contact.getAday(),
+                contact.getAmonth(),
+                contact.getAyear(),
+                contact.getSecondaryAddress(),
+                contact.getPhoneTwo(),
+                contact.getNotes(),
+                contact.getGroup(),
+                contact.getPhoto()));
+    }
   }
 
   private List<ContactData> generateContact(int count) {
@@ -120,7 +120,7 @@ public class ContactDataGenerator {
               .withSecondaryAddress("Secondary Address")
               .withPhoneTwo("767676")
               .withNotes("notesText")
-              .withGroup("test1")
+              .withGroup("test 1")
               .withPhoto(new File("src/test/resources/img.jpg")));
     }
     return contacts;
