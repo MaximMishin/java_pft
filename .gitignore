@@ -34,3 +34,7 @@ sandbox/.DS_Store
 sandbox/out/production/classes/assignment2/AssignmentTwo.class
 sandbox/out/production/classes/assignment2/Point.class
 sandbox/out/test/classes/AssignmentThree/PointTests.class
+*.xml
+*.html
+*.css
+*.js
