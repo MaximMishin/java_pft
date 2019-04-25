@@ -79,22 +79,22 @@ public class ContactData {
   @Type(type = "text")
   private String homePage;
 
-  @Transient
+  @Column(name = "bday", columnDefinition = "TINYINT")
   private String bday;
 
-  @Transient
+  @Column(name = "bmonth")
   private String bmonth;
 
-  @Transient
+  @Column(name = "byear")
   private String byear;
 
-  @Transient
+  @Column(name = "aday", columnDefinition = "TINYINT")
   private String aday;
 
-  @Transient
+  @Column(name = "amonth")
   private String amonth;
 
-  @Transient
+  @Column(name = "ayear")
   private String ayear;
 
   @Column(name = "address2")
@@ -118,8 +118,6 @@ public class ContactData {
   @Transient
   private String allEmails;
 
-  //  @Column(name = "photo")
-//  @Type(type = "text")
   @Transient
   private File photo;
 
@@ -155,6 +153,12 @@ public class ContactData {
     if (email2 != null ? !email2.equals(that.email2) : that.email2 != null) return false;
     if (email3 != null ? !email3.equals(that.email3) : that.email3 != null) return false;
     if (homePage != null ? !homePage.equals(that.homePage) : that.homePage != null) return false;
+    if (bday != null ? !bday.equals(that.bday) : that.bday != null) return false;
+    if (bmonth != null ? !bmonth.equals(that.bmonth) : that.bmonth != null) return false;
+    if (byear != null ? !byear.equals(that.byear) : that.byear != null) return false;
+    if (aday != null ? !aday.equals(that.aday) : that.aday != null) return false;
+    if (amonth != null ? !amonth.equals(that.amonth) : that.amonth != null) return false;
+    if (ayear != null ? !ayear.equals(that.ayear) : that.ayear != null) return false;
     if (secondaryAddress != null ? !secondaryAddress.equals(that.secondaryAddress) : that.secondaryAddress != null)
       return false;
     if (phoneTwo != null ? !phoneTwo.equals(that.phoneTwo) : that.phoneTwo != null) return false;
@@ -179,6 +183,12 @@ public class ContactData {
     result = 31 * result + (email2 != null ? email2.hashCode() : 0);
     result = 31 * result + (email3 != null ? email3.hashCode() : 0);
     result = 31 * result + (homePage != null ? homePage.hashCode() : 0);
+    result = 31 * result + (bday != null ? bday.hashCode() : 0);
+    result = 31 * result + (bmonth != null ? bmonth.hashCode() : 0);
+    result = 31 * result + (byear != null ? byear.hashCode() : 0);
+    result = 31 * result + (aday != null ? aday.hashCode() : 0);
+    result = 31 * result + (amonth != null ? amonth.hashCode() : 0);
+    result = 31 * result + (ayear != null ? ayear.hashCode() : 0);
     result = 31 * result + (secondaryAddress != null ? secondaryAddress.hashCode() : 0);
     result = 31 * result + (phoneTwo != null ? phoneTwo.hashCode() : 0);
     result = 31 * result + (notes != null ? notes.hashCode() : 0);
