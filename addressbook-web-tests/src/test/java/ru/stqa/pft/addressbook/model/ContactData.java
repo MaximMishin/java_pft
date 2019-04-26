@@ -4,17 +4,16 @@ package ru.stqa.pft.addressbook.model;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
+import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.Type;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.io.File;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "addressbook")
@@ -109,8 +108,8 @@ public class ContactData {
   @Type(type = "text")
   private String notes;
 
-  @Transient
-  private String group;
+//  @Transient
+//  private String group;
 
   @Transient
   private String allPhones;
@@ -120,6 +119,12 @@ public class ContactData {
 
   @Transient
   private File photo;
+
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name = "address_in_groups",
+          joinColumns = @JoinColumn(name ="id"),
+          inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> group = new HashSet<GroupData>();
 
   public File getPhoto() {
     return photo;
@@ -325,11 +330,6 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withGroup(String group) {
-    this.group = group;
-    return this;
-  }
-
   public ContactData withAllPhones(String allPhones) {
     this.allPhones = allPhones;
     return this;
@@ -431,8 +431,8 @@ public class ContactData {
     return notes;
   }
 
-  public String getGroup() {
-    return group;
+  public Groups getGroup() {
+    return new Groups(group);
   }
 
   public int getId() {

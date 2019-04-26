@@ -120,7 +120,7 @@ public class ContactDataGenerator {
               .withSecondaryAddress("Secondary Address")
               .withPhoneTwo("767676")
               .withNotes("notesText")
-              .withGroup("test 1")
+              //.withGroup("test 1")
               .withPhoto(new File("src/test/resources/img.jpg")));
     }
     return contacts;

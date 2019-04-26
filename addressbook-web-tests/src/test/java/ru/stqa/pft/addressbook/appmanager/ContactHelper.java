@@ -44,7 +44,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("phone2"), contactData.getPhoneTwo());
     type(By.name("notes"), contactData.getNotes());
     if (creation) {
-      selectValue(By.name("new_group"), contactData.getGroup());
+ //     selectValue(By.name("new_group"), contactData.getGroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }

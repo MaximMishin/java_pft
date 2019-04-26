@@ -4,31 +4,38 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @XStreamAlias("group")
 @Entity
 @Table(name = "group_list")
 public class GroupData {
+
   @XStreamOmitField
   @Id
-  @Column(name="group_id")
+  @Column(name = "group_id")
   private int id = Integer.MAX_VALUE;
 
-  @Column(name="group_name")
+  @Column(name = "group_name")
   private String name;
 
-  @Column(name="group_header")
+  @Column(name = "group_header")
   @Type(type = "text")
   private String header;
 
-  @Column(name="group_footer")
+  @Column(name = "group_footer")
   @Type(type = "text")
   private String footer;
+
+  @ManyToMany(mappedBy = "group")
+  private Set<ContactData> contact = new HashSet<ContactData>();
+
+  public Set<ContactData> getContact() {
+    return new Contacts(contact);
+  }
 
   public String getName() {
     return name;
