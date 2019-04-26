@@ -24,8 +24,8 @@
     <secondaryAddress>Secondary Address</secondaryAddress>
     <phoneTwo>767676</phoneTwo>
     <notes>notesText</notes>
-    <group>test 1</group>
     <photo>src/test/resources/img.jpg</photo>
+    <groups/>
   </contact>
   <contact>
     <firstName>FirstName1</firstName>
@@ -52,8 +52,8 @@
     <secondaryAddress>Secondary Address</secondaryAddress>
     <phoneTwo>767676</phoneTwo>
     <notes>notesText</notes>
-    <group>test 1</group>
     <photo>src/test/resources/img.jpg</photo>
+    <groups/>
   </contact>
   <contact>
     <firstName>FirstName2</firstName>
@@ -80,7 +80,7 @@
     <secondaryAddress>Secondary Address</secondaryAddress>
     <phoneTwo>767676</phoneTwo>
     <notes>notesText</notes>
-    <group>test 1</group>
     <photo>src/test/resources/img.jpg</photo>
+    <groups/>
   </contact>
 </list>

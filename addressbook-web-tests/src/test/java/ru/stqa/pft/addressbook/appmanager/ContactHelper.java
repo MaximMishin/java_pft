@@ -3,9 +3,11 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.List;
 
@@ -44,7 +46,11 @@ public class ContactHelper extends HelperBase {
     type(By.name("phone2"), contactData.getPhoneTwo());
     type(By.name("notes"), contactData.getNotes());
     if (creation) {
- //     selectValue(By.name("new_group"), contactData.getGroup());
+      if(contactData.getGroups().size() >0){
+        Assert.assertTrue(contactData.getGroups().size()==1);
+        new Select(wd.findElement(By.name("new_group")))
+                .selectByVisibleText(contactData.getGroups().iterator().next().getName());
+      }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -150,5 +156,18 @@ public class ContactHelper extends HelperBase {
             .withEmail1(email1)
             .withEmail2(email2)
             .withEmail3(email3);
+  }
+
+
+  public void removeFromGroup(ContactData contact) {
+    selectById(contact.getId());
+    click(By.name("remove"));
+    navigationHelper.homePage();
+  }
+
+  public void addToGroup(ContactData contact, GroupData group) {
+    selectById(contact.getId());
+    selectValue(By.cssSelector("[name=to_group]"), group.getName());
+    click(By.cssSelector("[type=submit]"));
   }
 }

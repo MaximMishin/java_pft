@@ -68,7 +68,7 @@ public class ContactModificationTests extends TestBase {
             .withBmonth("February")
             .withByear("1990")
             .withAday("5")
-            .withAmonth("February")
+            .withAmonth("february")
             .withAyear("2020")
             .withSecondaryAddress("Secondary Address")
             .withPhoneTwo("767676")

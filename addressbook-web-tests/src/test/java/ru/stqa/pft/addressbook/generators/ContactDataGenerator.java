@@ -87,7 +87,7 @@ public class ContactDataGenerator {
                 contact.getSecondaryAddress(),
                 contact.getPhoneTwo(),
                 contact.getNotes(),
-                contact.getGroup(),
+                //contact.getGroups(),
                 contact.getPhoto()));
     }
   }

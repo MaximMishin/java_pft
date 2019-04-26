@@ -1,10 +1,12 @@
 package ru.stqa.pft.addressbook.tests;
 
 import com.thoughtworks.xstream.XStream;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.*;
@@ -18,6 +20,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 
 public class ContactCreationTests extends TestBase {
+
+  @BeforeMethod
+  public void ensurePreconditions() {
+    if (app.db().groups().size() == 0) {
+      app.goTo().groupPage();
+      app.group().create(new GroupData().withName("test1"));
+    }
+  }
 
   @DataProvider
   public Iterator<Object[]> validContact() throws IOException {
@@ -40,9 +50,12 @@ public class ContactCreationTests extends TestBase {
   @Test(dataProvider = "validContact")
   public void testContactCreation(ContactData contact) {
     Groups groups = app.db().groups();
+    File photo = new File("src/test/resources/img.jpg");
+    ContactData newContact = new ContactData().withFirstName("Name").withLastName("Last").withPhoto(photo)
+            .inGroup(groups.iterator().next());
     Contacts before = app.db().contacts();
     app.goTo().addNewPage();
-    app.contact().create(contact, true);
+    app.contact().create(newContact, true);
     Contacts after = app.db().contacts();
     assertThat(after.size(), equalTo(before.size() + 1));
 
