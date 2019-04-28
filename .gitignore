@@ -36,3 +36,6 @@ sandbox/out/production/classes/assignment2/Point.class
 sandbox/out/test/classes/AssignmentThree/PointTests.class
 *.html
 *.css
+.DS_Store
+.DS_Store
+.DS_Store
