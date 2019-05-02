@@ -20,4 +20,7 @@ public class TestBase {
     app.stop();
   }
 
+  public ApplicationManager getApplicationManager() {
+    return app;
+  }
 }
