@@ -8,18 +8,10 @@ repositories {
 dependencies {
     implementation 'org.testng:testng:6.9.10'
     implementation 'biz.futureware.mantis:mantis-axis-soap-client:1.2.19'
-//    implementation 'org.seleniumhq.selenium:selenium-java:3.14.0'
-//    implementation 'org.hamcrest:java-hamcrest:2.0.0.0'
-//    implementation 'commons-net:commons-net:3.6'
-//    implementation 'org.subethamail:subethasmtp:3.1.7'
-//    implementation 'ru.lanwen.verbalregex:java-verbal-expressions:1.6'
-//    implementation 'org.hibernate:hibernate-core:5.4.2.Final'
-//    implementation 'com.thoughtworks.xstream:xstream:1.4.8'
-//    implementation 'mysql:mysql-connector-java:8.0.15'
 }
 
-buildscript{
-    repositories{
+buildscript {
+    repositories {
         jcenter()
         mavenCentral()
     }
@@ -37,31 +29,7 @@ wsdl2java {
     ]
 }
 
-//test {
-//    useTestNG {
-//        suites 'src/test/resources/testng.xml'
-//    }
-//    if (projects.hasProperty('browser')) {
-//        systemProperty 'browser', "${browser}"
-//    }
-//    if (projects.hasProperty('target')) {
-//        systemProperty 'target', "${target}"
-//    }
-//    if (projects.hasProperty('verifyUI')) {
-//        systemProperty 'verifyUI', "${verifyUI}"
-//    }
-//}
-//task testContacts(type: Test) {
-//    useTestNG {
-//        suites 'src/test/resources/testng-contacts.xml'
-//    }
-//    if (projects.hasProperty('browser')) {
-//        systemProperty 'browser', "${browser}"
-//    }
-//    if (projects.hasProperty('target')) {
-//        systemProperty 'target', "${target}"
-//    }
-//    if (projects.hasProperty('verifyUI')) {
-//        systemProperty 'verifyUI', "${verifyUI}"
-//    }
-//}
+test {
+    useTestNG {
+    }
+}
