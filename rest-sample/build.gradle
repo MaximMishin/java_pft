@@ -1,0 +1,52 @@
+apply plugin: 'java'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.testng:testng:6.9.10'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'org.apache.httpcomponents:httpclient:4.5.8'
+    implementation 'org.apache.httpcomponents:fluent-hc:4.5.8'
+    implementation 'io.rest-assured:rest-assured:3.3.0'
+//    implementation 'org.seleniumhq.selenium:selenium-java:3.14.0'
+//    implementation 'org.hamcrest:java-hamcrest:2.0.0.0'
+//    implementation 'commons-net:commons-net:3.6'
+//    implementation 'org.subethamail:subethasmtp:3.1.7'
+//    implementation 'ru.lanwen.verbalregex:java-verbal-expressions:1.6'
+//    implementation 'org.hibernate:hibernate-core:5.4.2.Final'
+//    implementation 'com.thoughtworks.xstream:xstream:1.4.8'
+//    implementation 'mysql:mysql-connector-java:8.0.15'
+}
+
+
+//test {
+//    useTestNG {
+//        suites 'src/test/resources/testng.xml'
+//    }
+//    if (projects.hasProperty('browser')) {
+//        systemProperty 'browser', "${browser}"
+//    }
+//    if (projects.hasProperty('target')) {
+//        systemProperty 'target', "${target}"
+//    }
+//    if (projects.hasProperty('verifyUI')) {
+//        systemProperty 'verifyUI', "${verifyUI}"
+//    }
+//}
+//task testContacts(type: Test) {
+//    useTestNG {
+//        suites 'src/test/resources/testng-contacts.xml'
+//    }
+//    if (projects.hasProperty('browser')) {
+//        systemProperty 'browser', "${browser}"
+//    }
+//    if (projects.hasProperty('target')) {
+//        systemProperty 'target', "${target}"
+//    }
+//    if (projects.hasProperty('verifyUI')) {
+//        systemProperty 'verifyUI', "${verifyUI}"
+//    }
+//}
