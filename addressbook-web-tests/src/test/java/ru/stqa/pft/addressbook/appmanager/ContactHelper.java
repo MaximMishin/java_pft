@@ -58,7 +58,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectById(int id) {
-    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    wd.findElement(By.cssSelector(".center input[value='" + id + "']")).click();
   }
 
   public void delete() {
@@ -74,7 +74,8 @@ public class ContactHelper extends HelperBase {
   }
 
   public boolean isThereContact(int id) {
-    return isElementPresent(By.cssSelector("input[value='" + id + "']"));
+
+    return isElementPresent(By.xpath("//*[@id="+id+"]"));
   }
 
   NavigationHelper navigationHelper = new NavigationHelper(wd);

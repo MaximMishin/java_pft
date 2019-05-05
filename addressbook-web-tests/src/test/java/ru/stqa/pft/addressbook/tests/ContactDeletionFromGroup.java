@@ -29,7 +29,7 @@ public class ContactDeletionFromGroup extends TestBase {
   }
 
   @Test
-  public void testContactDeletionFromGroup() {
+  public void testContactDeletionFromGroup() throws InterruptedException {
     ContactData contact = app.db().contacts().iterator().next();
     GroupData group = app.db().groups().iterator().next();
     app.goTo().homePage();
