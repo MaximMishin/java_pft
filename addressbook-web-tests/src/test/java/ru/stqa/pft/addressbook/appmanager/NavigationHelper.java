@@ -24,7 +24,7 @@ public class NavigationHelper extends HelperBase {
             && wd.findElement(By.xpath("//label[21]")).getText().equals("Groups")) {
       return;
     }
-    click(By.linkText("add new"));
+    click(By.cssSelector("li.all > a"));
   }
 
   public void homePage() {
