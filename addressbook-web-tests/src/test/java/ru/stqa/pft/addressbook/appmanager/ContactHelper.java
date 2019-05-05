@@ -73,8 +73,8 @@ public class ContactHelper extends HelperBase {
     click(By.name("update"));
   }
 
-  public boolean isThereContact() {
-    return isElementPresent(By.name("selected[]"));
+  public boolean isThereContact(int id) {
+    return isElementPresent(By.cssSelector("input[value='" + id + "']"));
   }
 
   NavigationHelper navigationHelper = new NavigationHelper(wd);
@@ -120,6 +120,7 @@ public class ContactHelper extends HelperBase {
       String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
       String allPhones = element.findElement(By.cssSelector("td:nth-child(6)")).getText();
       String allEmails = element.findElement(By.cssSelector("td:nth-child(5)")).getText();
+      String address = element.findElement(By.cssSelector("td:nth-child(4)")).getText();
 
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       contactCache.add(new ContactData()
@@ -127,7 +128,8 @@ public class ContactHelper extends HelperBase {
               .withLastName(lastName)
               .withFirstName(firstName)
               .withAllPhones(allPhones)
-              .withAllEmails(allEmails));
+              .withAllEmails(allEmails)
+              .withAddress(address));
     }
     return new Contacts(contactCache);
   }
@@ -138,6 +140,7 @@ public class ContactHelper extends HelperBase {
     String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
     String homePhone = wd.findElement(By.name("home")).getAttribute("value");
     String mobilePhone = wd.findElement(By.name("mobile")).getAttribute("value");
+    String address = wd.findElement(By.name("address")).getAttribute("value");
     String workPhone = wd.findElement(By.name("work")).getAttribute("value");
     String phoneTwo = wd.findElement(By.name("phone2")).getAttribute("value");
     String email1 = wd.findElement(By.name("email")).getAttribute("value");
@@ -155,7 +158,8 @@ public class ContactHelper extends HelperBase {
             .withPhoneTwo(phoneTwo)
             .withEmail1(email1)
             .withEmail2(email2)
-            .withEmail3(email3);
+            .withEmail3(email3)
+            .withAddress(address);
   }
 
 

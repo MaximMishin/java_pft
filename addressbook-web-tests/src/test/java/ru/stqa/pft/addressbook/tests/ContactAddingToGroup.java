@@ -34,7 +34,7 @@ public class ContactAddingToGroup extends TestBase {
     GroupData group = app.db().groups().iterator().next();
     app.goTo().homePage();
     app.goTo().filterByGroup(group);
-    if (app.contact().isThereContact()) {
+    if (app.contact().isThereContact(contact.getId())) {
       app.contact().removeFromGroup(contact);
     } else {
       app.goTo().filterByAllGroups();

@@ -49,13 +49,9 @@ public class ContactCreationTests extends TestBase {
 
   @Test(dataProvider = "validContact")
   public void testContactCreation(ContactData contact) {
-    Groups groups = app.db().groups();
-    File photo = new File("src/test/resources/img.jpg");
-    ContactData newContact = new ContactData().withFirstName("Name").withLastName("Last").withPhoto(photo)
-            .inGroup(groups.iterator().next());
     Contacts before = app.db().contacts();
     app.goTo().addNewPage();
-    app.contact().create(newContact, true);
+    app.contact().create(contact, true);
     Contacts after = app.db().contacts();
     assertThat(after.size(), equalTo(before.size() + 1));
 
