@@ -24,7 +24,6 @@
     <secondaryAddress>Secondary Address</secondaryAddress>
     <phoneTwo>767676</phoneTwo>
     <notes>notesText</notes>
-    <photo>src/test/resources/img.jpg</photo>
     <groups/>
   </contact>
 </list>
